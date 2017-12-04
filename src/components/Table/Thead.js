@@ -8,6 +8,7 @@ const Thead = ({ children, onClick, theadRef }) => (
 );
 
 Thead.propTypes = {
+  theadRef: PropTypes.func,
   onClick: PropTypes.func
 };
 
