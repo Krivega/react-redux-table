@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Thead = ({ children, onClick }) => <thead onClick={onClick}>{children}</thead>;
+const Thead = ({ children, onClick, theadRef }) => (
+  <thead ref={theadRef} onClick={onClick}>
+    {children}
+  </thead>
+);
 
 Thead.propTypes = {
   onClick: PropTypes.func

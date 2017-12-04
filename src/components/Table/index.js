@@ -138,10 +138,12 @@ export default class Table extends React.Component {
     return <Tr key={index}>{row.map(this.renderHeadCell)}</Tr>;
   };
 
-  handleClickHead = event => {
+  handleClickHead = ({ clientX, clientY }) => {
+    const { x: headX, y: headY } = this.elHead.getBoundingClientRect();
+
     this.setState({
-      headSettingsX: event.clientX,
-      headSettingsY: event.clientY,
+      headSettingsX: clientX - headX,
+      headSettingsY: clientY - headY,
       headSettingsShow: true
     });
   };
@@ -174,6 +176,10 @@ export default class Table extends React.Component {
     );
   }
 
+  setRefElHead = el => {
+    this.elHead = el;
+  };
+
   renderHead() {
     const { children } = this.props;
     const rows = [];
@@ -191,7 +197,11 @@ export default class Table extends React.Component {
       return column;
     });
 
-    return <Thead onClick={this.handleClickHead}>{rows.map(this.renderHeadRow)}</Thead>;
+    return (
+      <Thead theadRef={this.setRefElHead} onClick={this.handleClickHead}>
+        {rows.map(this.renderHeadRow)}
+      </Thead>
+    );
   }
 
   renderBody() {
