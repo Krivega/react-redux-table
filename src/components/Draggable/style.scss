@@ -1,0 +1,11 @@
+$widthDraggable: 20px;
+
+.draggable {
+  position: absolute;
+  top: 0;
+  right: -$widthDraggable / 2;
+  bottom: 0;
+  z-index: 1;
+  width: $widthDraggable;
+  cursor: ew-resize;
+}

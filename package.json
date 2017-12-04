@@ -1,0 +1,60 @@
+{
+  "name": "react-redux-table",
+  "description":
+    "Working with tabular data (based on Bootstrap) in the infrastructure of react-redux",
+  "version": "0.1.0",
+  "keywords": ["reactjs", "redux"],
+  "contributors": [
+    {
+      "name": "Krivega Dmitriy",
+      "email": "mr.krivega@gmail.com",
+      "web": "http://krivega.com/"
+    }
+  ],
+  "demos": ["http://krivega.com/lab/react-redux-table"],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/Krivega/react-redux-table.git"
+    }
+  ],
+  "private": true,
+
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta.2",
+    "cross-env": "^5.1.1",
+    "flat": "^4.0.0",
+    "husky": "^0.14.3",
+    "immutable": "^3.8.2",
+    "lint-staged": "^6.0.0",
+    "lodash": "^4.17.4",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.8.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-draggable": "^3.0.4",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.17",
+    "rebem-classname": "^0.4.0",
+    "redux": "^3.7.2",
+    "redux-immutable": "^4.0.0",
+    "reselect": "^3.0.1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "build-css": "node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/ --watch --recursive",
+    "start-js": "cross-env NODE_PATH=src react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "cross-env NODE_PATH=src react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
